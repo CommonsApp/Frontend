@@ -3,13 +3,13 @@ module.exports = {
     loaders: [
       {
         test: /\.js$/,
-        loader: 'jsx-loader',
+        loader: ['jsx-loader', 'babel-loader'],
         exclude: /node_modules/
       }
     ]
   },
   entry: {
-    app: './app/app.js'
+    app: './src/index.js'
   },
   output: {
     filename: 'public/[name].js'
