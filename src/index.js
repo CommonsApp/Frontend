@@ -1,16 +1,44 @@
 import React from 'react'
-import { render } from 'react-dom'
-import { createStore } from 'redux'
+import ReactDOM from 'react-dom'
+
+import { createStore, combineReducers, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
-import reducer from './reducers'
 
-import App from './components/App'
+import createHistory from 'history/createBrowserHistory'
+import { Route } from 'react-router'
 
-const store = createStore(reducer)
+import { ConnectedRouter, routerReducer, routerMiddleware, push } from 'react-router-redux'
 
-render(
+import reducers from './reducers' // Or wherever you keep your reducers
+
+import Members from './components/Members'
+import Profile from './components/Profile'
+
+// Create Browser History
+const history = createHistory()
+// Build the middleware for intercepting and dispatching navigation actions
+const middleware = routerMiddleware(history)
+
+const store = createStore(
+  combineReducers({
+    ...reducers,
+    router: routerReducer
+  }),
+  applyMiddleware(middleware)
+)
+
+ReactDOM.render(
   <Provider store={store}>
-    <App/>
+    { /* ConnectedRouter will use the store from Provider automatically */ }
+    <div>
+      <ConnectedRouter history={history}>
+        <div>
+        <Route path="/" component={Members}/>
+        <Route path="/members" component={Members}/>
+        <Route path="/members/:id" component={Profile}/>
+        </div>
+      </ConnectedRouter>
+    </div>
   </Provider>,
   document.getElementById('root')
 )

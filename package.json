@@ -24,9 +24,10 @@
   },
   "dependencies": {
     "babel-loader": "^6.3.2",
+    "history": "^4.6.1",
     "react-redux": "^5.0.3",
-    "react-router": "^2.0.0",
-    "redux": "^3.6.0",
-    "redux-router": "^2.1.2"
+    "react-router": "^4.0.0",
+    "react-router-redux": "^5.0.0-alpha.4",
+    "redux": "^3.6.0"
   }
 }
