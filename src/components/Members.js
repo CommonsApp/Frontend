@@ -5,7 +5,7 @@ export default class Members extends Component {
   render() {
     return (
       <div>
-        <Layout>
+        <Layout {...this.props}>
             <h1>Here is a list of members</h1>
         </Layout>
       </div>

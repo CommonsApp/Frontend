@@ -5,14 +5,15 @@ import { createStore, combineReducers, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 
 import createHistory from 'history/createBrowserHistory'
-import { Route } from 'react-router'
+import { Route } from 'react-router-dom'
 
 import { ConnectedRouter, routerReducer, routerMiddleware, push } from 'react-router-redux'
 
 import reducers from './reducers' // Or wherever you keep your reducers
 
 import Members from './components/Members'
-import Legislation from './components/Legislation'
+import LegislationList from './components/legislation/LegislationList'
+import LegislationView from './components/legislation/LegislationView'
 import Profile from './components/Profile'
 
 // Create Browser History
@@ -34,10 +35,12 @@ ReactDOM.render(
     <div>
       <ConnectedRouter history={history}>
         <div>
-        <Route path="/members" component={Members}/>
         <Route path="/members/:id" component={Profile}/>
-        <Route path="/legislation" component={Legislation}/>
-        <Route path="/" component={Members}/>
+        <Route exact path="/members" component={Members}/>
+        <Route path="/legislation/:id" component={LegislationView}/>
+        <Route exact path="/legislation" component={LegislationList}/>
+        <Route exact path="/" component={Members}>
+        </Route>
         </div>
       </ConnectedRouter>
     </div>

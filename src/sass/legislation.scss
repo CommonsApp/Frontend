@@ -1,0 +1,17 @@
+.legislation {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+
+  .legislation-header {
+    display: flex;
+    flex-direction: column;
+
+    &-meta {
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+    }
+  }
+}
