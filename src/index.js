@@ -12,6 +12,7 @@ import { ConnectedRouter, routerReducer, routerMiddleware, push } from 'react-ro
 import reducers from './reducers' // Or wherever you keep your reducers
 
 import Members from './components/Members'
+import Legislation from './components/Legislation'
 import Profile from './components/Profile'
 
 // Create Browser History
@@ -33,9 +34,10 @@ ReactDOM.render(
     <div>
       <ConnectedRouter history={history}>
         <div>
-        <Route path="/" component={Members}/>
         <Route path="/members" component={Members}/>
         <Route path="/members/:id" component={Profile}/>
+        <Route path="/legislation" component={Legislation}/>
+        <Route path="/" component={Members}/>
         </div>
       </ConnectedRouter>
     </div>

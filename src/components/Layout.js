@@ -1,17 +1,18 @@
 import React, { Component } from 'react'
+import TabBar from './navigation/TabBar'
+import '../sass/layout.scss'
 
 export default class Layout extends Component {
   render() {
     return (
-      <div>
+      <div className="layout-container">
         <h1>Welcome to Commons</h1>
-        <a>Activity</a>
-        <a>Representatives</a>
-        <a>Legislation</a>
 
-        {this.props.children}
+        <div className="layout-content">
+          {this.props.children}
+        </div>
 
-        <p>Footer goes here!</p>
+        <TabBar />
       </div>
     )
   }
