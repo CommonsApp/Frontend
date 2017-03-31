@@ -198,7 +198,7 @@ export default class LegislationList extends Component {
 
   renderSponsor(bill) {
     var classes = "list-item-header-secondary";
-    if (bill.sponsor_role.state == "TX") {
+    if (bill.sponsor_role.state == "IN") {
       classes = "list-item-header-secondary highlight";
     }
 

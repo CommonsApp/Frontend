@@ -31,14 +31,39 @@ export default class LegislationView extends Component {
       });
   }
 
+  renderCoSponsors() {
+    if (this.state.bill.cosponsors.length >= 1) {
+      var coSponsors = this.state.bill.cosponsors.map((cosponsor) => {
+        return (
+          <img key={cosponsor.id} src={"https://www.govtrack.us/data/photos/"+cosponsor.id+"-50px.jpeg"} alt={cosponsor.name}/>
+        );
+      });
+      return (
+        <div className="section">
+          <p className="section-label">Co-Sponsors</p>
+          <div className="section-content section-content-horizontal">
+            {coSponsors}
+          </div>
+        </div>
+      );
+    }
+  }
+
   renderView() {
     return (
-      <div className="legislation-header">
-        <div className="legislation-header-meta">
-          {this.state.bill.display_number}
+      <div>
+        <div className="section">
+          <p className="section-label">Bill Title</p>
+          <p className="section-content">{this.state.bill.title_without_number}</p>
         </div>
-        <div className="legislation-header-title">
-          {this.state.bill.title_without_number}
+        <div className="section">
+          <p className="section-label">Sponsor</p>
+          <p className="section-content">{this.state.bill.sponsor.name}</p>
+        </div>
+        {this.renderCoSponsors()}
+        <div className="section">
+          <p className="section-label">Current Status</p>
+          <p className="section-content">{this.state.bill.current_status_description}</p>
         </div>
       </div>
     );

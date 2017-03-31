@@ -3,15 +3,35 @@
   flex-direction: column;
   padding: 20px;
 
-  .legislation-header {
+  .section {
     display: flex;
     flex-direction: column;
+    margin-bottom: 20px;
 
-    &-meta {
+    &-label {
       font-size: 12px;
       font-weight: 700;
-      margin-bottom: 6px;
+      margin-bottom: 3px;
       text-transform: uppercase;
+    }
+
+    &-content {
+      margin-top: 6px;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+
+      &.section-content-horizontal {
+        flex-direction: row;
+      }
+
+      img {
+        height: 60px;
+        width: 50px;
+        border-radius: 6px;
+        margin-right: 12px;
+        margin-bottom: 12px;
+      }
     }
   }
 }
